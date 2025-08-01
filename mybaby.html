@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For my baby nika</title>
+<style>
+    body {
+        font-family: "Times New Roman", serif;
+        background-color: #ffeef5;
+        text-align: center;
+        margin: 0;
+        padding: 0;
+        position: relative;
+        overflow-x: hidden;
+        min-height: 100vh;
+    }
+
+    /* Animated background shapes */
+    .background-shapes {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: -1;
+    }
+
+    .heart {
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        background: #ffb3d1;
+        transform: rotate(45deg);
+        opacity: 0.6;
+        animation: float 6s ease-in-out infinite;
+    }
+
+    .heart:before,
+    .heart:after {
+        content: '';
+        width: 20px;
+        height: 20px;
+        position: absolute;
+        left: -10px;
+        top: 0;
+        background: #ffb3d1;
+        border-radius: 50%;
+    }
+
+    .heart:after {
+        left: 0;
+        top: -10px;
+    }
+
+    .star {
+        position: absolute;
+        width: 0;
+        height: 0;
+        border-left: 10px solid transparent;
+        border-right: 10px solid transparent;
+        border-bottom: 7px solid #ff7fa7;
+        opacity: 0.5;
+        animation: twinkle 4s ease-in-out infinite alternate;
+    }
+
+    .star:before {
+        content: '';
+        position: absolute;
+        left: -10px;
+        top: 3px;
+        width: 0;
+        height: 0;
+        border-left: 10px solid transparent;
+        border-right: 10px solid transparent;
+        border-top: 7px solid #ff7fa7;
+    }
+
+    .circle {
+        position: absolute;
+        border-radius: 50%;
+        background: rgba(255, 179, 209, 0.4);
+        animation: bounce 5s ease-in-out infinite;
+    }
+
+    .flower {
+        position: absolute;
+        width: 16px;
+        height: 16px;
+        background: #ff9dc4;
+        border-radius: 50%;
+        opacity: 0.7;
+        animation: spin 8s linear infinite;
+    }
+
+    .flower:before,
+    .flower:after {
+        content: '';
+        position: absolute;
+        width: 16px;
+        height: 16px;
+        background: #ff9dc4;
+        border-radius: 50%;
+    }
+
+    .flower:before {
+        top: -8px;
+        left: 0;
+    }
+
+    .flower:after {
+        top: 0;
+        left: -8px;
+    }
+
+    @keyframes float {
+        0%, 100% { transform: translateY(0px) rotate(45deg); }
+        50% { transform: translateY(-20px) rotate(45deg); }
+    }
+
+    @keyframes twinkle {
+        0% { opacity: 0.3; transform: scale(0.8); }
+        100% { opacity: 0.8; transform: scale(1.2); }
+    }
+
+    @keyframes bounce {
+        0%, 100% { transform: translateY(0px) scale(1); }
+        50% { transform: translateY(-15px) scale(1.1); }
+    }
+
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+
+    .card {
+        background: rgba(255, 255, 255, 0.95);
+        border: 2px solid pink;
+        border-radius: 15px;
+        padding: 20px;
+        width: 350px;
+        margin: 40px auto;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        position: relative;
+        z-index: 1;
+        backdrop-filter: blur(5px);
+    }
+    
+    .card-special {
+        background: rgba(255, 255, 255, 0.95);
+        border: 3px solid #ff9dc4;
+        border-radius: 20px;
+        padding: 25px;
+        width: 400px;
+        margin: 40px auto;
+        box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+        position: relative;
+        z-index: 1;
+        backdrop-filter: blur(5px);
+    }
+    
+    .photo-frame {
+        border: 3px solid #ff9dc4;
+        border-radius: 15px;
+        padding: 5px;
+        background: white;
+        display: inline-block;
+        margin-bottom: 20px;
+    }
+    
+    .love-message {
+        background: rgba(255, 240, 248, 0.8);
+        border: 2px solid #ff9dc4;
+        border-radius: 15px;
+        padding: 20px;
+        margin: 20px 0;
+        text-align: left;
+        line-height: 1.6;
+    }
+    
+    .message-title {
+        color: #ff4f87;
+        font-size: 18px;
+        text-align: center;
+        margin-bottom: 10px;
+        font-weight: bold;
+    }
+    
+    .reminder-box {
+        background: rgba(255, 179, 209, 0.3);
+        border: 2px solid #ff7fa7;
+        border-radius: 15px;
+        padding: 15px;
+        margin-top: 20px;
+        text-align: center;
+    }
+    
+    .reminder-text {
+        color: #333;
+        font-size: 20px;
+        font-weight: bold;
+        margin: 0;
+    }
+    img {
+        width: 150px;
+        border-radius: 10px;
+    }
+    h1 {
+        color: #ff4f87;
+        font-size: 22px;
+        margin-bottom: 5px;
+    }
+    p {
+        font-size: 14px;
+        color: #ff4f87;
+    }
+    .button, .button-green {
+        padding: 10px 25px;
+        border-radius: 25px;
+        border: none;
+        cursor: pointer;
+        font-size: 14px;
+        margin: 5px;
+    }
+    .button {
+        background-color: #ff7fa7;
+        color: white;
+    }
+    .button:hover {
+        background-color: #ff5c93;
+    }
+    .button-green {
+        background-color: #7fdba6;
+        color: white;
+    }
+    .button-green:hover {
+        background-color: #5fc78c;
+    }
+    .hidden {
+        display: none;
+    }
+    h2 {
+        color: #ff4f87;
+        font-size: 18px;
+        margin-bottom: 5px;
+    }
+</style>
+</head>
+<body>
+
+<!-- Animated background shapes -->
+<div class="background-shapes">
+    <!-- Hearts -->
+    <div class="heart" style="top: 10%; left: 10%; animation-delay: 0s;"></div>
+    <div class="heart" style="top: 20%; left: 85%; animation-delay: 1s;"></div>
+    <div class="heart" style="top: 60%; left: 5%; animation-delay: 2s;"></div>
+    <div class="heart" style="top: 80%; left: 90%; animation-delay: 3s;"></div>
+    <div class="heart" style="top: 40%; left: 15%; animation-delay: 4s;"></div>
+    
+    <!-- Stars -->
+    <div class="star" style="top: 15%; left: 75%; animation-delay: 0.5s;"></div>
+    <div class="star" style="top: 35%; left: 80%; animation-delay: 1.5s;"></div>
+    <div class="star" style="top: 70%; left: 20%; animation-delay: 2.5s;"></div>
+    <div class="star" style="top: 25%; left: 25%; animation-delay: 3.5s;"></div>
+    
+    <!-- Circles -->
+    <div class="circle" style="top: 5%; left: 50%; width: 30px; height: 30px; animation-delay: 1s;"></div>
+    <div class="circle" style="top: 45%; left: 5%; width: 25px; height: 25px; animation-delay: 2s;"></div>
+    <div class="circle" style="top: 75%; left: 70%; width: 35px; height: 35px; animation-delay: 3s;"></div>
+    <div class="circle" style="top: 30%; left: 95%; width: 20px; height: 20px; animation-delay: 4s;"></div>
+    
+    <!-- Flowers -->
+    <div class="flower" style="top: 12%; left: 60%; animation-delay: 0.8s;"></div>
+    <div class="flower" style="top: 50%; left: 85%; animation-delay: 1.8s;"></div>
+    <div class="flower" style="top: 85%; left: 15%; animation-delay: 2.8s;"></div>
+    <div class="flower" style="top: 65%; left: 95%; animation-delay: 3.8s;"></div>
+</div>
+
+<!-- Page 1 -->
+<div id="page1" class="card">
+    <img src="pics/bebee.jpg" alt="us">
+    <h1>HOMPI 7TH MOTMOT BABY!</h1>
+    <h2>HAPPY NATIONAL<br>GIRLFRIEND DAY</h2>
+    <p>Click mo this po, baby (づ｡◕‿‿◕｡)づ ♥</p>
+    <button class="button" onclick="showPage('page2')">Next!! ~♥</button>
+</div>
+
+<!-- Page 2 -->
+<div id="page2" class="card hidden">
+    <img src="pics/envelope.jpg" alt="Envelope" style="width:120px;">
+    <p>open mo po baby <br>ヾ(≧︿≦)ノ</p>
+    <button class="button" onclick="showPage('page4')">Omkiii</button>
+    <button class="button-green" onclick="showPage('page3')">Newp</button>
+</div>
+
+<!-- Page 3 -->
+<div id="page3" class="card hidden">
+    <img src="pics/sadcat.gif" alt="Sad Cat" style="width:120px;">
+    <p>awh... open mo na po baby please >_<</p>
+    <button class="button" onclick="showPage('page2')">Ulit po?</button>
+</div>
+
+<!-- Page 4 (Message) -->
+<div id="page4" class="card-special hidden">
+    <div class="photo-frame">
+        <img src="pics/us.jpg" alt="us" style="width: 200px; border-radius: 10px;">
+    </div>
+    
+    <div class="love-message">
+        <div class="message-title">To my Baby Nika<br></div>
+        <p style="color: #555; font-size: 14px; margin: 10px 0;">
+         HOMPI 7TH MOTMOTTT AND HOMPI GIRLFRIEND'S DAY MY BABY NIKAAA!!
+        </p>
+        <p style="color: #555; font-size: 14px; margin: 10px 0;">
+         I’m so thankful po for every moment na I'm with you, baby. I hope po na this new month is a fresh start for us, bring us more success, achievements, and unexpected blessings, and I hope it will bring us more happy days together. I wish po na everything will be okay for us and that we can face every challenge together. I’m always here for you my baby. Always remember that I'm always proud of you po, I'm proud of everything you achieve even the most little thing. I love you so sooooo much my love, through ups and downs, and always in all ways po!
+        </p>
+        <p style="color: #555; font-size: 14px; margin: 10px 0;">
+         Also po baby, I would like to sincerely apologize po sa mga mistakes na nagagawa ko. I didn't mean to hurt you po my baby and I'm really sorry po dahil nasaktan ko ikaw dahil sa actions ko, ayaw ko po na nasasaktan ko ikaw baby. I don't want you to think na hindi ko na mababago mga actions ko baby :<
+        </p>
+        <p style="color: #555; font-size: 14px; margin: 10px 0;">
+         I want to assure you po baby na this time I'do do better na po. hinding hindi ko na po uulitin mga nagagawa kong mali sa'yo baby, I'll make my mistakes a lesson para hindi ko na po maulit. I want us to be a healthy couple na ulit than palaging may problem and arguements. I want to grow with you po and I want to always be with you my baby nika.
+        </p>
+    </div>
+    
+    
+
+<script>
+function showPage(pageId) {
+    document.querySelectorAll('.card').forEach(card => {
+        card.classList.add('hidden');
+    });
+    document.getElementById(pageId).classList.remove('hidden');
+}
+</script>
+
+</body>
+</html>
